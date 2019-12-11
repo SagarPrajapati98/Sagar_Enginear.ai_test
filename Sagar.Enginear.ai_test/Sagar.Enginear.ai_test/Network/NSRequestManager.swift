@@ -19,6 +19,7 @@ struct HttpRequest {
 
 class NSRequestManager {
     
+    
     static public func requestwithGET(with url:String,complition:@escaping(_ status:Bool,_ resultdata:Data,_ message:String) -> Void){
         let req = self.createbody(url: url, method: .get, paramters: [:], headers: self.basicheader)
         self.sendrequest(request: req) { (status, responsedata, message) in
@@ -30,15 +31,21 @@ class NSRequestManager {
         
         Alamofire.request(request.url, method: request.method, parameters: request.parameters, encoding: URLEncoding.default, headers: request.headers).responseData { (response) in
             
-            switch response.result{
+            DispatchQueue.main.async {
+            
+                switch response.result{
                 case .success:
+                    let resposenstr = String(data: response.result.value!, encoding: String.Encoding.utf8);
+                    print(resposenstr!);
                     complition(true,response.result.value ?? Data(),"");
                     break;
-                
+                    
                 case .failure:
                     complition(false,Data(),response.result.error?.localizedDescription ?? "");
                     break;
+                }
             }
+            
         }
     }
     static private var basicheader:[String:String]{
@@ -49,5 +56,22 @@ class NSRequestManager {
         let request = HttpRequest(url: url, method: method, headers: headers , parameters: paramters);
         return request
         
+    }
+    static public func downloadimage(url:String,complition:@escaping(_ status:Bool,_ image:Data) -> Void){
+        Alamofire.request(url).responseData { (image) in
+            
+            DispatchQueue.main.async {
+                switch image.result{
+                case .success:
+                    complition(true,image.result.value ?? Data())
+                    break;
+                    
+                case .failure:
+                    complition(false,Data())
+                    break;
+                }
+            }
+            
+        }
     }
 }

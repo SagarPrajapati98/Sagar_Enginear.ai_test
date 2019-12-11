@@ -10,8 +10,14 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    //MARK: - Outlets
+    
+    @IBOutlet private weak var tableuserlist:UITableView!
+    @IBOutlet private weak var loadingview:UIView!
     
     
+    private var userlisting:[Users] = []
+    private var hasemore:Bool = false
     // MARK: - Lyfe Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +27,41 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated);
-        
+        self.setupUIElements()
+        self.getuserlist()
     }
     
+    //MARK: - USERFULL METHODS
+    
+    private func setupUIElements(){
+        self.tableuserlist.tableFooterView = self.loadingview
+    }
+    private func getuserlist(with offset:Int = 0){
+        
+        UserController.getuserwith(offset: offset) { (hasemore, users) in
+            
+            for user in users{
+                self.userlisting.append(user)
+            }
+            self.hasemore = hasemore;
+            self.tableuserlist.reloadData();
+            if !self.hasemore{
+                self.tableuserlist.tableFooterView = nil
+            }
+        }
+    }
+}
+extension HomeViewController:UITableViewDataSource,UITableViewDelegate{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = CellUser.share;
+        cell.userdetails(with: self.userlisting[indexPath.row]);
+        if self.hasemore && indexPath.row == self.userlisting.count - 1{
+            self.getuserlist(with: self.userlisting.count);
+        }
+        return cell;
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.userlisting.count
+    }
 }

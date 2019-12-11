@@ -29,7 +29,7 @@ class UserList : Codable {
 class UserResponse : Codable {
     let status : Bool?
     let message : String?
-    let data : Data?
+    let data : UserList?
     
     enum CodingKeys: String, CodingKey {
         
@@ -42,7 +42,7 @@ class UserResponse : Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         status = try values.decodeIfPresent(Bool.self, forKey: .status)
         message = try values.decodeIfPresent(String.self, forKey: .message)
-        data = try values.decodeIfPresent(Data.self, forKey: .data)
+        data = try values.decodeIfPresent(UserList.self, forKey: .data)
     }
     
 }

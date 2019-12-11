@@ -7,4 +7,5 @@ target 'Sagar.Enginear.ai_test' do
 
   # Pods for Sagar.Enginear.ai_test
   pod 'Alamofire'
+  pod 'SDWebImage'
 end

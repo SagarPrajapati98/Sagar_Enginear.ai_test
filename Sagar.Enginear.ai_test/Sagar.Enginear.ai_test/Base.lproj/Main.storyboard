@@ -18,17 +18,57 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zex-W5-yk7">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zex-W5-yk7">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="ofP-9g-G9s"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="Psb-7D-1te"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="zex-W5-yk7" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="X7H-Zs-qQ5"/>
+                            <constraint firstItem="zex-W5-yk7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="XOS-bb-5d8"/>
+                            <constraint firstItem="zex-W5-yk7" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="XXG-Bc-bCF"/>
+                            <constraint firstItem="zex-W5-yk7" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="wig-XQ-2ea"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="loadingview" destination="QUE-Jr-eMP" id="Gch-k1-xyS"/>
+                        <outlet property="tableuserlist" destination="zex-W5-yk7" id="psG-Ba-1vb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="QUE-Jr-eMP">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="EY9-KG-f3J">
+                            <rect key="frame" x="20" y="0.0" width="20" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="beM-s8-PuQ"/>
+                            </constraints>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0kV-0e-AOD">
+                            <rect key="frame" x="60" y="9.5" width="75" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="EY9-KG-f3J" firstAttribute="top" secondItem="JRh-ny-I0Z" secondAttribute="top" id="1jA-m2-h0n"/>
+                        <constraint firstItem="0kV-0e-AOD" firstAttribute="centerY" secondItem="JRh-ny-I0Z" secondAttribute="centerY" id="A2O-5f-Dar"/>
+                        <constraint firstItem="JRh-ny-I0Z" firstAttribute="bottom" secondItem="EY9-KG-f3J" secondAttribute="bottom" id="VpH-eW-OtE"/>
+                        <constraint firstItem="EY9-KG-f3J" firstAttribute="leading" secondItem="JRh-ny-I0Z" secondAttribute="leading" constant="20" id="bHS-cp-QiO"/>
+                        <constraint firstItem="0kV-0e-AOD" firstAttribute="leading" secondItem="EY9-KG-f3J" secondAttribute="trailing" constant="20" id="dUk-RW-01v"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="JRh-ny-I0Z"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="131.25" y="115"/>
         </scene>
