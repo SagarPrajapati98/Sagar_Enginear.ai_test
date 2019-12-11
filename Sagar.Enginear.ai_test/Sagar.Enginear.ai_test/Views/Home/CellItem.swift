@@ -12,8 +12,7 @@ import SDWebImage
 class CellItem: UICollectionViewCell {
 
     @IBOutlet private weak var imageitem:UIImageView!
-    @IBOutlet private weak var imagewidth:NSLayoutConstraint!
-    @IBOutlet private weak var imageheight:NSLayoutConstraint!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
