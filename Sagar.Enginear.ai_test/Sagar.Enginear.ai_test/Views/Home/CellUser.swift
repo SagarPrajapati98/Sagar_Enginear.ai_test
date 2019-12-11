@@ -14,7 +14,7 @@ class CellUser: UITableViewCell {
     @IBOutlet private weak var userimage:UIImageView!
     
     @IBOutlet private weak var imageitems:UICollectionView!
-    @IBOutlet private weak var imageitemsheight:NSLayoutConstraint!
+//    @IBOutlet private weak var imageitemsheight:NSLayoutConstraint!
     
     private var items:[String] = []
     
@@ -32,10 +32,18 @@ class CellUser: UITableViewCell {
         
         self.items = user.items ?? []
         self.imageitems.reloadData()
-//        if self.items.count % 2 != 0{
-//            self.imageitemsheight.constant =  self.imageitems.frame.height * CGFloat(self.items.count)
+//        if (self.items.count % 2 != 0){
+//            let newheight:CGFloat = self.imageitems.frame.height * (CGFloat(self.items.count - 1) / 2)
+//            self.imageitemsheight.constant = newheight + 150
+//
+//        }else{
+//            let newheight:CGFloat = self.imageitems.frame.height * (CGFloat(self.items.count) / 2)
+//            self.imageitemsheight.constant = newheight
 //        }
         
+//        print("Item Count \(self.items.count)")
+//        print("User Name \(user.name)")
+//        print("Final height \(self.imageitemsheight.constant)")
         
     }
     
@@ -65,14 +73,31 @@ extension CellUser:UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView.numberOfItems(inSection: 0) % 2 == 0 {
-            return CGSize(width: (self.imageitems.frame.size.width - 5) / 2, height: (self.imageitems.frame.size.width - 5) / 2)
+//        if collectionView.numberOfItems(inSection: 0) % 2 == 0 {
+//            return CGSize(width: (self.imageitems.frame.size.width - 5) / 2, height: (self.imageitems.frame.size.width - 5) / 2)
+//        }
+//
+//        let remaider = (Double(indexPath.item)/3).truncatingRemainder(dividingBy: 1)
+//        if remaider == 0 {
+//            return CGSize(width: self.imageitems.frame.size.width, height:  self.imageitems.frame.size.width)
+//        }
+//        return CGSize(width: (collectionView.frame.size.width - 5) / 2, height: (collectionView.frame.size.width - 5) / 2)
+
+        if items.count % 2 == 0{
+            let width = collectionView.frame.size.width / 2
+            return CGSize(width: width, height: width)
+        }else{
+            if indexPath.item == 0{
+                return CGSize(width: collectionView.frame.width, height: collectionView.frame.width)
+            }else{
+                let width = collectionView.frame.size.width / 2
+                return CGSize(width: width, height: width)
+            }
         }
-        let remaider = (Double(indexPath.item)/3).truncatingRemainder(dividingBy: 1)
-        if remaider == 0 {
-            return CGSize(width: self.imageitems.frame.size.width, height:  self.imageitems.frame.size.width)
-        }
-        return CGSize(width: (collectionView.frame.size.width - 5) / 2, height: (collectionView.frame.size.width - 5) / 2)
-        
     }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets.zero
+    }
+
 }
+

@@ -20,15 +20,15 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Owt-wr-1uR">
-                        <rect key="frame" x="0.0" y="0.0" width="57" height="56"/>
+                        <rect key="frame" x="2" y="2" width="53" height="54"/>
                     </imageView>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="Owt-wr-1uR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="39i-bQ-NA5"/>
+                <constraint firstItem="Owt-wr-1uR" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="2" id="39i-bQ-NA5"/>
                 <constraint firstAttribute="bottom" secondItem="Owt-wr-1uR" secondAttribute="bottom" id="A02-PF-57e"/>
-                <constraint firstAttribute="trailing" secondItem="Owt-wr-1uR" secondAttribute="trailing" id="S7C-zT-3Dq"/>
-                <constraint firstItem="Owt-wr-1uR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ysd-9B-jAi"/>
+                <constraint firstAttribute="trailing" secondItem="Owt-wr-1uR" secondAttribute="trailing" constant="2" id="S7C-zT-3Dq"/>
+                <constraint firstItem="Owt-wr-1uR" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="2" id="ysd-9B-jAi"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="57" height="56"/>

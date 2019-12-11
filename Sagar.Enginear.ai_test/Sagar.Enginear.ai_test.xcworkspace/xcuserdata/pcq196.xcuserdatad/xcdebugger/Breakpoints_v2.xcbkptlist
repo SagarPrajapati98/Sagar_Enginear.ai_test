@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sagar.Enginear.ai_test/Views/Home/CellUser.swift"
-            timestampString = "597756813.221863"
+            timestampString = "597759754.776358"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "collectionView(_:layout:sizeForItemAt:)"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "userdetails(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

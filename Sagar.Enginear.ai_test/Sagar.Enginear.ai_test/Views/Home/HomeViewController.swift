@@ -48,7 +48,8 @@ class HomeViewController: UIViewController {
             if !self.hasemore{
                 self.tableuserlist.tableFooterView = nil
             }
-        }
+        }// 
+        
     }
 }
 extension HomeViewController:UITableViewDataSource,UITableViewDelegate{
@@ -63,5 +64,16 @@ extension HomeViewController:UITableViewDataSource,UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.userlisting.count
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let arrayitems = self.userlisting[indexPath.row].items
+        if arrayitems!.count % 2 == 0{
+            let height = (arrayitems!.count / 2) * Int(tableView.frame.width / 2)
+            return CGFloat(height + 60)
+            
+        }else{
+            let height = (arrayitems!.count / 2) * Int(tableView.frame.width / 2)
+            return CGFloat(height + 60) + tableView.frame.width
+        }
     }
 }

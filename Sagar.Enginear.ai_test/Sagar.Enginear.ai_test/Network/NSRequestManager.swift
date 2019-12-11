@@ -36,7 +36,7 @@ class NSRequestManager {
                 switch response.result{
                 case .success:
                     let resposenstr = String(data: response.result.value!, encoding: String.Encoding.utf8);
-                    print(resposenstr!);
+//                    print(resposenstr!);
                     complition(true,response.result.value ?? Data(),"");
                     break;
                     
